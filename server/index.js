@@ -1,16 +1,29 @@
 const express = require('express');
-require('./services/passport');
+require('dotenv').config();
 const mongoose = require('mongoose');
-const keys = require('./config/keys');
-const authRoutes = require('./routes/authRoutes');
-require('./models/User');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const config = require('./config/app');
 
-mongoose.connect(keys.mongoURI);
+require('./models/User');
+require('./services/passport');
+
+
+mongoose.connect(config.mongoURI);
 
 //express() generates new express app
 const app = express();
 
-authRoutes(app);
+//TODO change cookieSession for express-session
+app.use(cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000, //days, hours, minutes, seconds, milisec
+    keys: [config.cookieKey]
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./routes/authRoutes') (app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
