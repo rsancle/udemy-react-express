@@ -1,10 +1,5 @@
 const passport = require('passport');
 
-//route handler sample
-/*app.get('/', (req, res) => {
-    res.send({ hi: 'there' });
-});*/
-
 module.exports = app => {
     app.get(
         '/auth/google',

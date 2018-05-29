@@ -27,6 +27,18 @@ passport.use(
             callbackURL: '/auth/google/callback',
             proxy: true
         },
+        async (accessToken, refreshToken, profile, done) => {
+            //Find if the user exist with GoogleID, if not, it creates a new one
+            const existingUser = await User.findOne({ googleId: profile.id});
+            if (existingUser){
+                done(null, existingUser);
+            } else {
+                const user = await new User({ googleId: profile.id }).save()
+                done(null, user);
+            }
+
+        }
+        /* old code
         (accessToken, refreshToken, profile, done) => {
             //Find if the user exist with GoogleID, if not, it creates a new one
             User.findOne({ googleId: profile.id})
@@ -40,6 +52,6 @@ passport.use(
                     }
                 }
             );
-        }
+        }*/
     )
 );
