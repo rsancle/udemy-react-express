@@ -12,7 +12,7 @@ export default class MainMenu extends Component {
                     <Menu.Menu position='right'>
                         <Menu.Item name='sign-in' >
                             <Button color='google plus'>
-                                <Icon name='google plus g' /> Login with Google
+                                <Icon name='google plus circle' /> Login with Google
                             </Button>
 
                         </Menu.Item>
