@@ -3,15 +3,20 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import Header from './Header';
+import Landing from './Landing';
 import { Container } from 'semantic-ui-react';
 const Dashboard = () => <h2>Dashboard</h2>;
 const SurveyNew = () => <h2>SurveyNew</h2>;
-const Landing = () => <h2>Landing</h2>;
 
 class App extends Component {
+    constructor() {
+        super();
+        this.state = {stripe: null};
+    }
 
     componentDidMount() {
         this.props.fetchUser();
+
     }
 
     render() {
