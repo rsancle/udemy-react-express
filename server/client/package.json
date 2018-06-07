@@ -11,18 +11,19 @@
     }
   },
   "dependencies": {
+    "@material-ui/core": "^1.2.0",
+    "@material-ui/icons": "^1.1.0",
     "axios": "^0.18.0",
+    "mdi-material-ui": "^5.1.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "react-stripe-checkout": "^2.6.3",
-    "react-stripe-elements": "^2.0.0",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.80.2"
+    "typeface-roboto": "0.0.54"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const config = require('./config/app');
 
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 
@@ -28,6 +29,21 @@ app.use(passport.session());
 //TODO use express Router
 require('./routes/authRoutes') (app);
 require('./routes/checkoutRoutes') (app);
+require('./routes/surveyRoutes') (app);
+
+
+//if it is in production
+if(process.env.NODE_ENV == 'production')
+{
+    //use static content from client/build path (js and css)
+    app.use(express.static('client/build'));
+
+    //if the route doesn't exists, redirect to the client index
+    const path = require('path');
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
