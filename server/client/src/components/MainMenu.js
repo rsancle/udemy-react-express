@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
+import PropTypes from 'prop-types';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
+import { withStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 
 import { GooglePlus } from 'mdi-material-ui';
@@ -93,7 +95,7 @@ class MainMenu extends Component {
     }
 
     render() {
-        const classes  = styles;
+        const { classes } = this.props;
 
 
         return (
@@ -121,6 +123,10 @@ return { auth };
 /*function mapStateToProps (state) {
 return { auth: state.auth };
 }*/
+MainMenu.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
 
-export default connect(mapStateToProps)(MainMenu);
+
+export default withStyles(styles) (connect(mapStateToProps)(MainMenu));
 
