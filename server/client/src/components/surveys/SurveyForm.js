@@ -10,7 +10,6 @@ import formFields from './formFields';
 class SurveyForm extends Component{
 
     renderFields() {
-        console.log(formFields);
         return _.map(formFields, ({name, type, label}) => {
 
             return (
