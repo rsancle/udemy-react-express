@@ -61,7 +61,7 @@ class MainMenu extends Component {
                         <Checkout/>
                     </div>,
                     <div key="3">
-                        <p > Credits: {this.props.auth.credits}</p>
+                        <Typography> Credits: {this.props.auth.credits}</Typography>
                     </div>,
                     <div key="2">
                         <IconButton
