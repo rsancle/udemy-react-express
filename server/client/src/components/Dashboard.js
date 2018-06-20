@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
-
+import SurveyList from './surveys/SurveyList';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+
 
 const styles = theme => ({
     button: {
@@ -25,6 +26,7 @@ class Dashboard extends Component {
         return (
             <div>
                 <Typography variant="title">Dashboard</Typography>
+                <SurveyList />
                 <div>
                     <Button variant="fab" color="primary" aria-label="add" className={classes.button} component={Link} to={"/surveys/new"}>
                         <AddIcon />
